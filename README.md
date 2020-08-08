@@ -20,8 +20,17 @@ It is also possible to set the range in samples used from the audio file with a 
 
 **Outlets**
 
-- (sig~) output
+- (sig~) audio output
 - (bang) final flag
+
+**Messages**
+
+- set (s): set buffer from name
+- set (s) (i): set buffer from name and selects channel
+- set (s) (i) (i) (i): set buffer from name, selects channel, and set first and last frame
+- samplim (i) (i): set first and last frame of buffer 
+- chan (i): select channel of buffer  
+- (bang): show info and resets bounds to 0 and last frame
 
 ------------------------------------------------------
 

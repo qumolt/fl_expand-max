@@ -96,14 +96,14 @@ void fl_expand_bang(t_fl_expand *x)
 	long len = (long)buffer_getframecount(buffer);
 	long nc = (long)buffer_getchannelcount(buffer);
 	float source_sr = (float)buffer_getsamplerate(buffer);
-	long chan = 0;
+	long chan = x->l_chan_sel;
 	long samp_ini = 0;
 	long samp_fin = len - 1;
 
 	buffer_unlocksamples(buffer);
 
 	x->source_len = len;
-	x->l_chan_sel = MIN(chan, nc - 1);
+	x->l_chan_sel = chan = MIN(chan, nc - 1);
 	x->samp_ini = samp_ini;
 	x->samp_fin = samp_fin;
 
