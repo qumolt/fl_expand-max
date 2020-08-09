@@ -248,7 +248,7 @@ void fl_expand_perform64(t_fl_expand *x, t_object *dsp64, double **ins, long num
 	t_double *in = ins[0];
 	t_double *out1 = outs[0];
 	t_double *out2 = outs[1];
-	int	n = sampleframes;
+	long	n = sampleframes;
 	t_float	*tab;
 	t_buffer_obj *buffer = buffer_ref_getobject(x->l_buffer_reference);
 
@@ -279,7 +279,6 @@ void fl_expand_perform64(t_fl_expand *x, t_object *dsp64, double **ins, long num
 	double outbar;
 
 	while (n--) {
-
 		outsamp = 0.0;
 		outbar = 0.0;
 
@@ -315,8 +314,14 @@ void fl_expand_perform64(t_fl_expand *x, t_object *dsp64, double **ins, long num
 	return;
 
 zero:
+    //or you could just do:
+    set_zero64(out1, n);
+    set_zero64(out2, n);
+     
+    /*
 	while (n--) {
 		*out1++ = 0.0;
 		*out2++ = 0.0;
 	}
+     */
 }
